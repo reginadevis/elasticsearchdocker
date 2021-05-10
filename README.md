@@ -4,16 +4,26 @@
 2) After packaging the application through maven, please open powershell and go the directory where 'Dockerfile' is present.
 3) Please follow the below steps in powershell.
 
-//docker run elasticsearch
+
+_//create a docker network_
+docker network create -d bridge sample
+
+_//list the networks_
+docker network ls
+
+_//docker run elasticsearch_
 
 docker container run --network sample -p 9200:9200 -p 9300:9300 --name trialsearch -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.12.1
 
-//dockeer run sample elastic image
+_//create docker image for the application_
 
 docker image build -t elastic .
 
+_// run the image in the same network as elastic search so that they can communicate_
+_// docker compose should be used in terms of production mode. This is done here as docker desktop in Home edition is not able to create the images under same network_
 docker container run --network sample --name accident-container -p 8080:8080 -d elastic
 
+_//view logs of the running app_
 docker container logs -f accident-container
 
 
