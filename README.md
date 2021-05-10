@@ -1,4 +1,4 @@
-Steps to run this application
+**Steps to run this application**
 
 1) Please install Docker desktop and WSL2 (in case the OS is Windows 10 Home version), else please enable Hyper V mode in Windows Features.
 2) After packaging the application through maven, please open powershell and go the directory where 'Dockerfile' is present.
@@ -16,7 +16,8 @@ docker container run --network sample --name accident-container -p 8080:8080 -d 
 
 docker container logs -f accident-container
 
-Note: If the system memory is exhausted due to docker desktop, the below steps can be performed to increase the processors and heap size for WSL.
+
+**Note:** If the system memory is exhausted due to docker desktop, the below steps can be performed to increase the processors and heap size for WSL.
 
 1) In powershell, execute the below command.
       wsl --shutdown
